@@ -172,6 +172,7 @@ function cdls()
 alias cd="cdls"
 
 alias ..="cd .."
+alias ~="cd ~"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -186,3 +187,4 @@ alias gpl="git pull origin master"
 alias findv='find "$(pwd)" -name "*.v"'
 # Find All .f Files Recursively
 alias findf='find "$(pwd)" -name "*.f"'
+
