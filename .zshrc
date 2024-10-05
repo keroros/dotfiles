@@ -146,12 +146,19 @@ source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # 命令�
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh #自动补全
 source $HOME/.zsh/vi.zsh # 启用vim模式命令行
 
+# dotfiles
 alias shr="cd /mnt/hgfs/Share"
 alias bashrc="gvim ~/.bashrc"
 alias zshrc="gvim ~/.zshrc"
 alias vimrc="gvim ~/.vimrc" 
 alias tmuxrc="gvim ~/.tmux.conf"
 alias gitrc="gvim ~/.gitconfig"
+
+# script
+alias t="zsh /home/qidc/Nutstore/Project/config/script/tmux_start.sh"
+alias cn="python3 /home/qidc/Nutstore/Project/config/script/convert_num.py"
+alias setup="zsh /home/qidc/Nutstore/Project/config/script/setup_module.sh"
+
 
 alias g="gvim"
 alias v="vim"
@@ -162,8 +169,7 @@ alias df="df -h"
 alias sl="ls"
 alias dc="cd"
 alias e="exit"
-alias t="tmux"
-alias szsh="source ~/.zshrc"
+alias tk="tmux kill-session -t mysession"
 
 function cdls() 
 	{
@@ -180,8 +186,8 @@ alias ~="cd ~"
 alias ga="git add ."
 alias gc="git commit -m"
 alias grao="git remote add origin"
-alias gps="git push -u origin master"
-alias gpl="git pull origin master"
+alias gps="git push -u origin main"
+alias gpl="git pull origin main"
 
 # Find All .v Files Recursively
 alias findv='find "$(pwd)" -name "*.v"'
