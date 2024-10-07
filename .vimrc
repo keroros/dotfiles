@@ -1,100 +1,48 @@
-" Comments in Vimscript start with a `"`.
+" 基本设置
+set nocompatible                             " 启用Vim增强功能
+" 颜色与高亮设置
+syntax on                                    " 启用语法高亮
+set background=dark                          " 设置暗色背景
+set number                                   " 显示行号
+set cursorline                               " 高亮当前行
+set laststatus=2                             " 始终显示状态栏
+set hidden                                   " 允许隐藏未保存的缓冲区
+" 搜索设置
+set ignorecase                               " 搜索时默认不区分大小写
+set smartcase                                " 搜索词包含大写字母时区分大小写
+set incsearch                                " 启用增量搜索
+set hlsearch                                 " 高亮搜索结果
+" 禁用设置
+set shortmess+=I                             " 禁用默认的Vim启动消息
+set noerrorbells visualbell t_vb=            " 禁用声音提示
+set mouse+=a                                 " 禁用鼠标支持
+set showmatch                                " 显示匹配的括号
+" 按键与缩进设置
+set shiftwidth=2                             " 设置<<和>>命令的宽度为2
+set backspace=indent,eol,start               " 回车键在插入模式下更易用
+set softtabstop=4                            " 按回车键时删除2个空格
+set tabstop=4                                " 设置Tab长度为4
+set expandtab                                " 将Tab转换为空格
+set smartindent                              " 启用智能缩进
+" 字体与行间距设置
+set guifont=Consolas\ 12                     " 设置英文字体
+set guifontwide=LXGW\ WenKai\ GB\ Screen\ 12 " 设置中文字体
+set linespace=5                              " 设置行间距
 
-" If you open this file in Vim, it'll be syntax highlighted for you.
+" 禁用Q键退出
+nmap Q <Nop> 
 
-" Vim is based on Vi. Setting `nocompatible` switches from the default
-" Vi-compatibility mode and enables useful Vim functionality. This
-" configuration option turns out not to be necessary for the file named
-" '~/.vimrc', because Vim automatically enters nocompatible mode if that file
-" is present. But we're including it here just in case this config file is
-" loaded some other way (e.g. saved as `foo`, and then Vim started with
-" `vim -u foo`).
-set nocompatible
-
-" Turn on syntax highlighting.
-syntax on
-
-" Disable the default Vim startup message.
-set shortmess+=I
-
-" Show line numbers.
-set number
-
-" This enables relative line numbering mode. With both number and
-" relativenumber enabled, the current line shows the true line number, while
-" all other lines (above and below) are numbered relative to the current line.
-" This is useful because you can tell, at a glance, what count is needed to
-" jump up or down to a particular line, by {count}k to go up or {count}j to go
-" down.
-"set relativenumber
-
-" Always show the status line at the bottom, even if you only have one window open.
-set laststatus=2
-
-" The backspace key has slightly unintuitive behavior by default. For example,
-" by default, you can't backspace before the insertion point set with 'i'.
-" This configuration makes backspace behave more reasonably, in that you can
-" backspace over anything.
-set backspace=indent,eol,start
-
-" By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
-" shown in any window) that has unsaved changes. This is to prevent you from "
-" forgetting about unsaved changes and then quitting e.g. via `:qa!`. We find
-" hidden buffers helpful enough to disable this protection. See `:help hidden`
-" for more information on this.
-set hidden
-
-" This setting makes search case-insensitive when all characters in the string
-" being searched are lowercase. However, the search becomes case-sensitive if
-" it contains any capital letters. This makes searching more convenient.
-set ignorecase
-set smartcase
-
-" Enable searching as you type, rather than waiting till you press enter.
-set incsearch
-
-" Unbind some useless/annoying default key bindings.
-nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
-
-" Disable audible bell because it's annoying.
-set noerrorbells visualbell t_vb=
-
-" Enable mouse support. You should avoid relying on this too much, but it can
-" sometimes be convenient.
-set mouse+=a
-
-" Try to prevent bad habits like using the arrow keys for movement. This is
-" not the only possible bad habit. For example, holding down the h/j/k/l keys
-" for movement, rather than using more efficient movement commands, is also a
-" bad habit. The former is enforceable through a .vimrc, while we don't know
-" how to prevent the latter.
-" Do this in normal mode...
+" 禁用方向键
 nnoremap <Left>  :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up>    :echoe "Use k"<CR>
 nnoremap <Down>  :echoe "Use j"<CR>
-" ...and in insert mode
 inoremap <Left>  <ESC>:echoe "Use h"<CR>
 inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
-" If using a dark background within the editing area and syntax highlighting
-" option as well
-set background=dark
-
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-filetype plugin indent on
-
-set showmatch          " Show matching brackets.
-set incsearch          " Incremental search
-set cursorline         " Highlight the current line
-set shiftwidth=2       " Set the width of the << and >> commands to 2
-set softtabstop=2      " Remove 2 spaces when pressing the backspace key
-set tabstop=2          " Set the tab length to 2
-set hlsearch           " Highlight found text during search 
-set smartindent        " Use intelligautomatic indentation when opening a new line
+filetype plugin indent on " 根据文件类型加载插件和缩进规则
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -125,6 +73,10 @@ func SkipPair()
 endfunc
 inoremap <TAB> <c-r>=SkipPair()<CR>
 
-colorscheme desert
+colo atom
 
 vnoremap P "+p
+
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+call plug#end()
