@@ -2,6 +2,7 @@
 set nocompatible                             " 启用Vim增强功能
 
 " 颜色与高亮设置
+syntax on                                    " 启用语法高亮
 set background=dark                          " 设置暗色背景
 set cursorline                               " 高亮当前行
 
@@ -64,7 +65,7 @@ func SkipPair()
      \ getline('.')[col('.') - 1] == '"' ||
      \ getline('.')[col('.') - 1] == "'" ||
      \ getline('.')[col('.') - 1] == '}'
-        return "\<ESC>la"   
+        return "\<ESC>la"
     else
         return "\t"
     endif
@@ -73,32 +74,19 @@ inoremap <TAB> <c-r>=SkipPair()<CR>
 
 "vim-plug插件管理
 call plug#begin('~/.vim/plugged')
-Plug 'joshdick/onedark.vim'             " onedark主题插件
-Plug 'sheerun/vim-polyglot'             " 更多语言高亮插件
-Plug 'itchyny/lightline.vim'            " 状态栏美化插件
-Plug 'scrooloose/nerdtree'              " 文件树插件
-Plug 'HonkW93/automatic-verilog'        " Verilog自动化插件
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'itchyny/lightline.vim'
+Plug 'HonkW93/automatic-verilog'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
-" onedark.vim插件配置
-syntax on                               " 启用语法高亮
-colorscheme onedark                     " 启用atom颜色主题
+" 配置onedark.vim插件
+colo onedark
 
-" nerdtree插件配置
+" 配置nerdtree插件
 map <silent> <C-e> :NERDTreeToggle<CR>
-autocmd BufEnter * NERDTreeRefreshRoot
-autocmd BufWritePost * NERDTreeRefreshRoot
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-" automatic-verilog插件
-let g:atv_snippet_att_en = 1
-let g:atv_crossdir_mode = 0
-let g:atv_snippet_project = 'Tiny RISC-V'
-let g:atv_snippet_company = 'Peking University'
-let g:atv_snippet_device = ''
-let g:atv_snippet_author = 'Qidc'
-let g:atv_snippet_email = 'qidc@stu.pku.edu.cn'
-let g:atv_snippet_website = ''
