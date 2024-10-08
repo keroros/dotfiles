@@ -171,8 +171,7 @@ alias dc="cd"
 alias e="exit"
 alias tk="tmux kill-session -t mysession"
 
-function cdls() 
-	{
+function cdls() {
 		builtin cd "$1" && ls
 	}
 alias cd="cdls"
