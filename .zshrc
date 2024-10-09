@@ -158,7 +158,7 @@ alias gitrc="gvim ~/.gitconfig"
 alias t="zsh /home/qidc/Nutstore/Project/config/script/tmux_start.sh"
 alias cn="python3 /home/qidc/Nutstore/Project/config/script/convert_num.py"
 alias setup="zsh /home/qidc/Nutstore/Project/config/script/setup_module.sh"
-
+alias gpa="zsh /home/qidc/Nutstore/Project/config/script/git_push_all.sh"
 
 alias g="gvim"
 alias v="vim"

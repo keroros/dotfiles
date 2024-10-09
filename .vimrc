@@ -49,14 +49,6 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
-" 自动补全括号
-inoremap ' ''<ESC>i
-inoremap " ""<ESC>i
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<Left>
-inoremap } {}<Left><CR><Esc>V<O
-
 " Tab键跳过右括号
 func SkipPair()
     if getline('.')[col('.') - 1] == ')' ||
@@ -69,7 +61,7 @@ func SkipPair()
         return "\t"
     endif
 endfunc
-inoremap <TAB> <c-r>=SkipPair()<CR>
+" inoremap <TAB> <c-r>=SkipPair()<CR>
 
 "vim-plug插件管理
 call plug#begin('~/.vim/plugged')
@@ -78,6 +70,7 @@ Plug 'sheerun/vim-polyglot'             " 更多语言高亮插件
 Plug 'itchyny/lightline.vim'            " 状态栏美化插件
 Plug 'scrooloose/nerdtree'              " 文件树插件
 Plug 'HonkW93/automatic-verilog'        " Verilog自动化插件
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " onedark.vim插件配置
@@ -93,7 +86,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" automatic-verilog插件
+" automatic-verilog插件配置
 let g:atv_snippet_att_en = 1
 let g:atv_crossdir_mode = 0
 let g:atv_snippet_project = 'Tiny RISC-V'
@@ -102,3 +95,6 @@ let g:atv_snippet_device = ''
 let g:atv_snippet_author = 'Qidc'
 let g:atv_snippet_email = 'qidc@stu.pku.edu.cn'
 let g:atv_snippet_website = ''
+
+" AutoPairs插件配置
+
