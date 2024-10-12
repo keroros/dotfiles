@@ -169,8 +169,16 @@ alias mkdir="mkdir -p"
 alias df="df -h"
 alias sl="ls"
 alias dc="cd"
-alias e="gpa && exit"
 alias tk="tmux kill-session -t mysession"
+
+function e() {
+    gpa
+    if [ $? -eq 0 ]; then
+        exit
+    else
+        echo "gpa script failed. Terminal will not exit."
+    fi
+}
 
 function cdls() {
 		builtin cd "$1" && ls
