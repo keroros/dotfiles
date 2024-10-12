@@ -42,7 +42,7 @@ source /etc/profile.d/lmli.sh
 alias shr="cd /mnt/hgfs/Share"
 alias bashrc="gvim ~/.bashrc"
 alias zshrc="gvim ~/.zshrc"
-alias vimrc="gvim ~/.vimrc" 
+alias vimrc="gvim ~/.vimrc"
 alias tmuxrc="gvim ~/.tmux.conf"
 alias gitrc="gvim ~/.gitconfig"
 

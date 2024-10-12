@@ -37,7 +37,10 @@ set guifontwide=LXGW\ WenKai\ GB\ Screen\ 12 " 设置中文字体
 set linespace=5                              " 设置行间距
 
 " 禁用Q键退出
-nmap Q <Nop> 
+nmap Q <Nop>
+
+" 删除行尾空白字符
+nnoremap <C-]> :%s/\s\+$//g<CR>
 
 " 禁用方向键
 nnoremap <Left>  :echoe "Use h"<CR>
@@ -56,7 +59,7 @@ func SkipPair()
      \ getline('.')[col('.') - 1] == '"' ||
      \ getline('.')[col('.') - 1] == "'" ||
      \ getline('.')[col('.') - 1] == '}'
-        return "\<ESC>la"   
+        return "\<ESC>la"
     else
         return "\t"
     endif
@@ -97,4 +100,4 @@ let g:atv_snippet_email = 'qidc@stu.pku.edu.cn'
 let g:atv_snippet_website = ''
 
 " AutoPairs插件配置
-"
+
