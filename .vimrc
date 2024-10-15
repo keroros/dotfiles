@@ -1,4 +1,4 @@
-" 基本设置
+" 基本设置 
 set nocompatible                             " 启用Vim增强功能
 
 " 颜色与高亮设置
@@ -23,13 +23,14 @@ set incsearch                                " 启用增量搜索
 set hlsearch                                 " 高亮搜索结果
 
 " 按键与缩进设置
-set shiftwidth=2                             " 设置<<和>>命令的宽度为2
+set shiftwidth=4                             " 设置按下回车键插入4个空格
 set backspace=indent,eol,start               " 回车键在插入模式下更易用
 set softtabstop=4                            " 按回车键时删除2个空格
-set tabstop=4                                " 设置Tab长度为4
-set expandtab                                " 将Tab转换为空格
+set tabstop=4                                " 设置tab长度为4
+set expandtab                                " 将tab转换为空格
 set smartindent                              " 启用智能缩进
-filetype plugin indent on                    " 根据文件类型加载插件和缩进规则
+" filetype plugin indent on                    " 根据文件类型加载插件和缩进规则
+" autocmd FileType verilog setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 " 字体与行间距设置
 set guifont=Consolas\ 12                     " 设置英文字体
@@ -56,7 +57,6 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 func SkipPair()
     if getline('.')[col('.') - 1] == ')' ||
      \ getline('.')[col('.') - 1] == ']' ||
-     \ getline('.')[col('.') - 1] == '"' ||
      \ getline('.')[col('.') - 1] == "'" ||
      \ getline('.')[col('.') - 1] == '}'
         return "\<ESC>la"
