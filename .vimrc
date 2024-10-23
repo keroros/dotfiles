@@ -73,7 +73,8 @@ Plug 'sheerun/vim-polyglot'             " 更多语言高亮插件
 Plug 'itchyny/lightline.vim'            " 状态栏美化插件
 Plug 'scrooloose/nerdtree'              " 文件树插件
 Plug 'HonkW93/automatic-verilog'        " Verilog自动化插件
-Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'             " 括号匹配插件
+Plug 'junegunn/vim-easy-align'          " 对齐插件
 call plug#end()
 
 " onedark.vim插件配置
@@ -100,4 +101,8 @@ let g:atv_snippet_email = 'qidc@stu.pku.edu.cn'
 let g:atv_snippet_website = ''
 
 " AutoPairs插件配置
+
+" EasyAlign插件配置
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
