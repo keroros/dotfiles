@@ -1,5 +1,4 @@
-" 基本设置 
-set nocompatible                             " 启用Vim增强功能
+" 基本设置 set nocompatible                             " 启用Vim增强功能
 
 " 颜色与高亮设置
 set background=dark                          " 设置暗色背景
@@ -30,7 +29,6 @@ set tabstop=4                                " 设置tab长度为4
 set expandtab                                " 将tab转换为空格
 set smartindent                              " 启用智能缩进
 " filetype plugin indent on                    " 根据文件类型加载插件和缩进规则
-" autocmd FileType verilog setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 " 字体与行间距设置
 set guifont=Consolas\ 12                     " 设置英文字体
@@ -43,15 +41,9 @@ nmap Q <Nop>
 " 删除行尾空白字符
 nnoremap <C-]> :%s/\s\+$//g<CR>
 
-" 禁用方向键
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
-inoremap <Left>  <ESC>:echoe "Use h"<CR>
-inoremap <Right> <ESC>:echoe "Use l"<CR>
-inoremap <Up>    <ESC>:echoe "Use k"<CR>
-inoremap <Down>  <ESC>:echoe "Use j"<CR>
+" 设置Ctrl+k和j为上下移动10行
+nnoremap <C-j> 8j
+nnoremap <C-k> 8k
 
 " Tab键跳过右括号
 func SkipPair()
@@ -75,19 +67,18 @@ Plug 'scrooloose/nerdtree'              " 文件树插件
 Plug 'HonkW93/automatic-verilog'        " Verilog自动化插件
 Plug 'jiangmiao/auto-pairs'             " 括号匹配插件
 Plug 'junegunn/vim-easy-align'          " 对齐插件
+Plug 'w0rp/ale'                         " 语法检查插件
 call plug#end()
 
 " onedark.vim插件配置
 syntax on                               " 启用语法高亮
-colorscheme onedark                     " 启用atom颜色主题
+colorscheme onedark                     " 启用onedark颜色主题
 
 " nerdtree插件配置
 map <silent> <C-e> :NERDTreeToggle<CR>
 autocmd BufEnter * NERDTreeRefreshRoot
 autocmd BufWritePost * NERDTreeRefreshRoot
 nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " automatic-verilog插件配置
@@ -99,6 +90,9 @@ let g:atv_snippet_device = ''
 let g:atv_snippet_author = 'Qidc'
 let g:atv_snippet_email = 'qidc@stu.pku.edu.cn'
 let g:atv_snippet_website = ''
+let g:atv_autoinst_io_dir = 0
+let g:atv_autoinst_incl_cmnt = 0
+let g:atv_autoinst_incl_width = 0
 
 " AutoPairs插件配置
 
@@ -106,3 +100,16 @@ let g:atv_snippet_website = ''
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" Ale插件配置
+let g:ale_enabled = 0
+let g:ale_linters = {
+\    'verilog': ['iverilog']
+\}
+let g:ale_sign_error = 'E:'
+let g:ale_sign_warning = 'W:'
+map <C-a> :ALEToggle<CR>
+nmap <silent> <A-k> <Plug>(ale_previous_wrap)
+nmap <silent> <A-j> <Plug>(ale_next_wrap)
+autocmd BufEnter * lcd %:p:h
+
+" set nohls
