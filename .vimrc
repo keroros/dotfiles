@@ -41,9 +41,11 @@ nmap Q <Nop>
 " 删除行尾空白字符
 nnoremap <C-]> :%s/\s\+$//g<CR>
 
-" 设置Ctrl+k和j为上下移动10行
-nnoremap <C-j> 8j
-nnoremap <C-k> 8k
+" 设置Ctrl+hjkl为移动5行或5列
+nnoremap <C-h> 5h
+nnoremap <C-j> 5j
+nnoremap <C-k> 5k
+nnoremap <C-l> 5l
 
 " Tab键跳过右括号
 func SkipPair()
@@ -78,8 +80,8 @@ colorscheme onedark                     " 启用onedark颜色主题
 map <silent> <C-e> :NERDTreeToggle<CR>
 autocmd BufEnter * NERDTreeRefreshRoot
 autocmd BufWritePost * NERDTreeRefreshRoot
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
 
 " automatic-verilog插件配置
 let g:atv_snippet_att_en = 1
@@ -93,8 +95,6 @@ let g:atv_snippet_website = ''
 let g:atv_autoinst_io_dir = 0
 let g:atv_autoinst_incl_cmnt = 0
 let g:atv_autoinst_incl_width = 0
-
-" AutoPairs插件配置
 
 " EasyAlign插件配置
 xmap ga <Plug>(EasyAlign)
