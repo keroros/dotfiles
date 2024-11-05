@@ -31,7 +31,7 @@ set hlsearch                                 " 高亮搜索结果
 " 按键与缩进设置
 set shiftwidth=4                             " 设置按下回车键插入4个空格
 set backspace=indent,eol,start               " 回车键在插入模式下更易用
-s et softtabstop=4                            " 按回车键时删除2个空格
+set softtabstop=4                            " 按回车键时删除2个空格
 set tabstop=4                                " 设置tab长度为4
 set expandtab                                " 将tab转换为空格
 set smartindent                              " 启用智能缩进
@@ -117,4 +117,23 @@ map <C-a> :ALEToggle<CR>
 nmap <silent> <A-k> <Plug>(ale_previous_wrap)
 nmap <silent> <A-j> <Plug>(ale_next_wrap)
 autocmd BufEnter * lcd %:p:h
+
+" CocNvim插件配置
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Tab键在列表中选择
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" 回车键确定变量
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+let g:coc_disable_startup_warning = 1
 
