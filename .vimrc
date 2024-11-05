@@ -1,3 +1,10 @@
+set shiftwidth=4                             " 设置按下回车键插入4个空格
+set backspace=indent,eol,start               " 回车键在插入模式下更易用
+set softtabstop=4                            " 按回车键时删除2个空格
+set tabstop=4                                " 设置tab长度为4
+set expandtab                                " 将tab转换为空格
+set smartindent                              " 启用智能缩进
+" filetype plugin indent on                    " 根据文件类型加载插件和缩进规则
 " 基本设置 set nocompatible                             " 启用Vim增强功能
 
 " 颜色与高亮设置
@@ -28,6 +35,7 @@ set softtabstop=4                            " 按回车键时删除2个空格
 set tabstop=4                                " 设置tab长度为4
 set expandtab                                " 将tab转换为空格
 set smartindent                              " 启用智能缩进
+autocmd FileType systemverilog setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 " filetype plugin indent on                    " 根据文件类型加载插件和缩进规则
 
 " 字体与行间距设置
@@ -70,6 +78,7 @@ Plug 'HonkW93/automatic-verilog'        " Verilog自动化插件
 Plug 'jiangmiao/auto-pairs'             " 括号匹配插件
 Plug 'junegunn/vim-easy-align'          " 对齐插件
 Plug 'w0rp/ale'                         " 语法检查插件
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " onedark.vim插件配置
