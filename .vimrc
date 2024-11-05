@@ -31,12 +31,11 @@ set hlsearch                                 " 高亮搜索结果
 " 按键与缩进设置
 set shiftwidth=4                             " 设置按下回车键插入4个空格
 set backspace=indent,eol,start               " 回车键在插入模式下更易用
-set softtabstop=4                            " 按回车键时删除2个空格
+s et softtabstop=4                            " 按回车键时删除2个空格
 set tabstop=4                                " 设置tab长度为4
 set expandtab                                " 将tab转换为空格
 set smartindent                              " 启用智能缩进
 autocmd FileType systemverilog setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
-" filetype plugin indent on                    " 根据文件类型加载插件和缩进规则
 
 " 字体与行间距设置
 set guifont=Consolas\ 12                     " 设置英文字体
@@ -89,8 +88,6 @@ colorscheme onedark                     " 启用onedark颜色主题
 map <silent> <C-e> :NERDTreeToggle<CR>
 autocmd BufEnter * NERDTreeRefreshRoot
 autocmd BufWritePost * NERDTreeRefreshRoot
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
 
 " automatic-verilog插件配置
 let g:atv_snippet_att_en = 1
@@ -121,4 +118,3 @@ nmap <silent> <A-k> <Plug>(ale_previous_wrap)
 nmap <silent> <A-j> <Plug>(ale_next_wrap)
 autocmd BufEnter * lcd %:p:h
 
-" set nohls
