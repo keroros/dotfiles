@@ -67,7 +67,9 @@ alias mv="mv -i"
 alias mkdir="mkdir -p"
 alias findv='find "$(pwd)" -name "*.v"'   # 递归查找当前目录下的所有.v文件
 alias findf='find "$(pwd)" -name "*.f"'   # 递归查找当前目录下的所有.v文件
-alias tk="tmux kill-session -t mysession"
+alias tk="tmux kill-session -t mysession" # 关闭所有窗格并退出tmux
+alias py="python3"
+
 # 退出终端前推送所有仓库到Github
 function e() {
     gpa
@@ -77,6 +79,7 @@ function e() {
         echo "gpa script failed. Terminal will not exit."
     fi
 }
+
 # cd的同时列出目录下的所有文件
 function cdls() {
 		builtin cd "$1" && ls
