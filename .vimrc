@@ -77,7 +77,8 @@ Plug 'HonkW93/automatic-verilog'        " Verilog自动化插件
 Plug 'jiangmiao/auto-pairs'             " 括号匹配插件
 Plug 'junegunn/vim-easy-align'          " 对齐插件
 Plug 'w0rp/ale'                         " 语法检查插件
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}   " 代码补全插件
+Plug 'RRethy/vim-illuminate'            " 光标下单词高亮插件
 call plug#end()
 
 " onedark.vim插件配置
